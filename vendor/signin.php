@@ -2,8 +2,8 @@
 session_start();
 
 require_once 'connect.php';
-$captcha_token = $_POST['smart-token'];
-$server_key ='ysc2_dwpHOdMzgRLNGhenU6PBFf5ANeTBS7yD9tIjuCea1b556919';
+$captcha_token = $_POST['smart-token']?? '';
+$server_key ='ysc2_JNr4ymtn21II69ufqjORmOHXc99eFq5Fe2PbDpw9cbbfe5fb';
 if(!$captcha_token){
     $_SESSION['message']='Подвердите, что вы не робот';
     header('Location: ../authorization.php');
@@ -15,9 +15,15 @@ curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
     'secret' => $server_key,
     'token' => $captcha_token,
-    'ip' => $_SERVER['REMOTE_ADDR']
 ]));
+
 $response = curl_exec($ch);
+if($response === false){
+    $_SESSION['message'] = 'Ошибка проверки капчи: ' . curl_error($ch);
+    curl_close($ch);
+    header('Location: ../authorization.php');
+    exit;
+}
 curl_close($ch);
 
 $result = json_decode($response, true);

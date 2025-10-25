@@ -19,7 +19,7 @@
         <input type="password" name="password" placeholder="Введите пароль" required>
         <script src="https://smartcaptcha.yandexcloud.net/captcha.js" async defer></script>
         <div id="captcha-container" class="smart-captcha"
-            data-sitekey="ysc1_dwpHOdMzgRLNGhenU6PBvTtUABgeeAJdlJyc4P55c6074c91">
+            data-sitekey="ysc2_dwpHOdMzgRLNGhenU6PBFf5ANeTBS7yD9tIjuCea1b556919">
         </div>
         <button> Войти </button>
         <p>У вас нет аккаунта?- <a href="registrastion.php">зарегистрируйтесь</a></p>

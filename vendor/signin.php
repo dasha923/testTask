@@ -3,7 +3,7 @@ session_start();
 
 require_once 'connect.php';
 $captcha_token = $_POST['smart-token'];
-$server_key ='ysc1_dwpHOdMzgRLNGhenU6PBvTtUABgeeAJdlJyc4P55c6074c91';
+$server_key ='ysc2_dwpHOdMzgRLNGhenU6PBFf5ANeTBS7yD9tIjuCea1b556919';
 if(!$captcha_token){
     $_SESSION['message']='Подвердите, что вы не робот';
     header('Location: ../authorization.php');
